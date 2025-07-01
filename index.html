@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dee GAGA | Official Portfolio</title>
   <style>
     body {
@@ -17,9 +17,10 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       min-height: 100vh;
       text-align: center;
+      padding: 2rem;
     }
 
     @keyframes gradientFlow {
@@ -43,26 +44,64 @@
 
     h1 {
       font-size: 3em;
-      margin: 0;
-    }
-
-    p {
-      font-size: 1.2em;
-      margin-top: 0.5em;
+      margin: 0.2em 0;
     }
 
     .tagline {
       font-style: italic;
       font-size: 1.1em;
-      margin-top: 0.2em;
       opacity: 0.7;
+      margin-bottom: 2rem;
+    }
+
+    .bio {
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    .socials a {
+      margin: 0 10px;
+      color: #00ffff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .socials a:hover {
+      text-decoration: underline;
+    }
+
+    .projects {
+      margin-top: 3rem;
+    }
+
+    .project-card {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #00ffff44;
     }
   </style>
 </head>
 <body>
   <h1>Dee GAGA</h1>
-  <p>Official Portfolio Site</p>
   <p class="tagline">"Where bold meets brilliance."</p>
+
+  <div class="bio">
+    <p>I'm Adrian Njuguna aka Dee GAGA — a bold, multi-talented creator: musician, CLI developer, dancer, video editor, and Ruby enthusiast. I build with rhythm and I code with heart. Welcome to my world.</p>
+  </div>
+
+  <div class="socials">
+    <a href="https://www.instagram.com/dee.gaga_0fficial">Instagram</a>
+    <a href="https://www.tiktok.com/@dee.gaga_0fficial">TikTok</a>
+    <a href="https://youtube.com/@gugugaga_arts">YouTube</a>
+    <a href="https://www.facebook.com/profile.php?id=61557292667064">Facebook</a>
+  </div>
+
+  <div class="projects">
+    <h2>My Projects</h2>
+    <div id="project-list"></div>
+  </div>
 
   <script>
     const dots = [];
@@ -80,6 +119,25 @@
       dot.style.top = e.pageY + "px";
       current = (current + 1) % dots.length;
     });
+
+    // UPGRADE 4: Auto-fetch GitHub Repos
+    const username = "DeeGAGA";
+    fetch(`https://api.github.com/users/${username}/repos`)
+      .then(res => res.json())
+      .then(repos => {
+        const list = document.getElementById("project-list");
+        repos.forEach(repo => {
+          if (!repo.fork && repo.description) {
+            const card = document.createElement("div");
+            card.className = "project-card";
+            card.innerHTML = `
+              <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
+              <p>${repo.description}</p>
+            `;
+            list.appendChild(card);
+          }
+        });
+      });
   </script>
 </body>
 </html>
