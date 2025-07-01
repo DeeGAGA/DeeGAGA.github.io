@@ -5,6 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dee GAGA | Official Portfolio</title>
   <style>
+	.terminal-banner {
+  font-family: 'Fira Code', monospace;
+  color: #00ffcc;
+  font-size: 1.2em;
+  background: black;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 12px #00ffcc88;
+}
+
+.cursor {
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
     body {
       margin: 0;
       padding: 0;
@@ -54,6 +73,12 @@
       margin-bottom: 2rem;
     }
 
+    .typewriter {
+      font-size: 1.2em;
+      margin-bottom: 2rem;
+      height: 1.4em;
+    }
+
     .bio {
       max-width: 600px;
       margin-bottom: 2rem;
@@ -80,12 +105,51 @@
       margin: 1rem 0;
       border-radius: 12px;
       box-shadow: 0 0 10px #00ffff44;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+
+      .tagline {
+        font-size: 1em;
+      }
+
+      .bio {
+        font-size: 0.95em;
+      }
+
+      .socials a {
+        display: block;
+        margin: 0.5rem 0;
+      }
     }
   </style>
 </head>
 <body>
+	<div class="terminal-banner">
+  <span id="terminal-text"></span><span class="cursor">█</span>
+</div>
+
   <h1>Dee GAGA</h1>
   <p class="tagline">"Where bold meets brilliance."</p>
+
+  <div class="typewriter" id="typewriter"></div>
 
   <div class="bio">
     <p>I'm Adrian Njuguna aka Dee GAGA — a bold, multi-talented creator: musician, CLI developer, dancer, video editor, and Ruby enthusiast. I build with rhythm and I code with heart. Welcome to my world.</p>
@@ -120,16 +184,16 @@
       current = (current + 1) % dots.length;
     });
 
-    // UPGRADE 4: Auto-fetch GitHub Repos
     const username = "DeeGAGA";
     fetch(`https://api.github.com/users/${username}/repos`)
       .then(res => res.json())
       .then(repos => {
         const list = document.getElementById("project-list");
-        repos.forEach(repo => {
+        repos.forEach((repo, index) => {
           if (!repo.fork && repo.description) {
             const card = document.createElement("div");
             card.className = "project-card";
+            card.style.animationDelay = `${index * 0.2}s`;
             card.innerHTML = `
               <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
               <p>${repo.description}</p>
@@ -138,7 +202,53 @@
           }
         });
       });
+  const terminalMessage = "Initializing portfolio... Access granted. Welcome, Dee GAGA.";
+let tIndex = 0;
+const termText = document.getElementById("terminal-text");
+
+function typeTerminal() {
+  if (tIndex < terminalMessage.length) {
+    termText.textContent += terminalMessage.charAt(tIndex++);
+    setTimeout(typeTerminal, 60);
+  }
+}
+typeTerminal();
+
+    // Typewriter Animation
+    const messages = [
+  "CLI Dev by night, Trap God by day...",
+  "Ruby meets rhythm, code meets creativity.",
+  "Subscribe. Follow. Share. Dee GAGA is HERE.",
+  "Don't forget to feel good like I do... #YOLO 😎",
+  "Welcome to my portfolio — the future lives here."
+];
+
+    ];
+    let part = 0;
+    let i = 0;
+    let isDeleting = false;
+    const el = document.getElementById("typewriter");
+
+    function type() {
+      let text = messages[part];
+      if (isDeleting) {
+        el.textContent = text.substring(0, i--);
+      } else {
+        el.textContent = text.substring(0, i++);
+      }
+
+      if (!isDeleting && i === text.length + 1) {
+        isDeleting = true;
+        setTimeout(type, 1000);
+        return;
+      } else if (isDeleting && i === 0) {
+        isDeleting = false;
+        part = (part + 1) % messages.length;
+      }
+      setTimeout(type, isDeleting ? 40 : 80);
+    }
+
+    type();
   </script>
 </body>
 </html>
-
