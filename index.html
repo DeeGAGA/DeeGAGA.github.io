@@ -8,120 +8,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
    <title>DeeGAGA — CLI Engineer / Music Artist</title>
   <style>
-body {
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(-45deg, #0f0f0f, #1a1a2e, #16213e, #0f3460);
-  background-size: 400% 400%;
-  animation: gradientFlow 15s ease infinite;
-  cursor: none; /* Hide default cursor */
-}
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(-45deg, #0f0f0f, #1a1a2e, #16213e, #0f3460);
+    background-size: 400% 400%;
+    animation: gradientFlow 15s ease infinite;
+    cursor: none; /* Hides default cursor */
+    color: #fff;
+    font-family: 'Fira Code', monospace;
+  }
 
-@keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+  @keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
-/* Cursor Trail */
-.trail-dot {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #00ffee;
-  pointer-events: none;
-  z-index: 9999;
-  box-shadow: 0 0 6px #00ffee;
-}
+  .trail-dot {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #00ffee;
+    pointer-events: none;
+    z-index: 9999;
+    box-shadow: 0 0 6px #00ffee;
+  }
+</style>
 
-#typed-terminal {
-  background-color: #000;
-  padding: 3rem;
-  font-family: 'Fira Code', monospace;
-  color: #00ff99;
-  text-align: left;
-  box-shadow: 0 0 20px #00ff9960;
-}
-
-.prompt {
-  color: #00ffaa;
-}
-
-.cursor {
-  animation: blink 0.8s infinite;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-    body {
-      background-color: #0f0f0f;
-      color: #f5f5f5;
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background: linear-gradient(90deg, #ff0055, #9900ff);
-      padding: 2rem;
-      text-align: center;
-      color: white;
-      box-shadow: 0 0 15px #ff00ff80;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin: 0;
-    }
-
-    h2 {
-      margin-top: 0.5rem;
-      font-weight: 400;
-      color: #ddd;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    .section {
-      margin-bottom: 2.5rem;
-    }
-
-    .social-links a {
-      display: inline-block;
-      margin-right: 1rem;
-      color: #00ffff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .social-links a:hover {
-      color: #ff00ff;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #888;
-      border-top: 1px solid #333;
-    }
-
-    code {
-      background-color: #222;
-      padding: 0.3rem 0.5rem;
-      border-radius: 5px;
-      font-size: 0.95rem;
-      color: #0ff;
-    }
-  </style>
 </head>
 <body>
   <header>
@@ -179,6 +95,9 @@ body {
       "I build tools. I drop tracks. I make noise.",
       "I write code like I write lyrics — fast and real.",
       "Welcome to Dee GAGA's portfolio."
+	"If you do tap on the links "
+	"then please do like and follow "
+	"and subscribe too..thankyou"
     ],
     typeSpeed: 45,
     backSpeed: 25,
