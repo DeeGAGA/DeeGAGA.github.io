@@ -5,25 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dee GAGA | Official Portfolio</title>
   <style>
-	.terminal-banner {
-  font-family: 'Fira Code', monospace;
-  color: #00ffcc;
-  font-size: 1.2em;
-  background: black;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-  box-shadow: 0 0 12px #00ffcc88;
-}
-
-.cursor {
-  animation: blink 1s step-start infinite;
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
-}
-
     body {
       margin: 0;
       padding: 0;
@@ -59,6 +40,25 @@
       pointer-events: none;
       z-index: 9999;
       box-shadow: 0 0 8px #00ffee, 0 0 16px #00ffee;
+    }
+
+    .terminal-banner {
+      font-family: 'Fira Code', monospace;
+      color: #00ffcc;
+      font-size: 1.2em;
+      background: black;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 12px #00ffcc88;
+    }
+
+    .cursor {
+      animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
     }
 
     h1 {
@@ -142,9 +142,9 @@
   </style>
 </head>
 <body>
-	<div class="terminal-banner">
-  <span id="terminal-text"></span><span class="cursor">█</span>
-</div>
+  <div class="terminal-banner">
+    <span id="terminal-text"></span><span class="cursor">█</span>
+  </div>
 
   <h1>Dee GAGA</h1>
   <p class="tagline">"Where bold meets brilliance."</p>
@@ -168,6 +168,7 @@
   </div>
 
   <script>
+    // Mouse trail effect
     const dots = [];
     for (let i = 0; i < 12; i++) {
       const dot = document.createElement("div");
@@ -184,6 +185,7 @@
       current = (current + 1) % dots.length;
     });
 
+    // GitHub project fetch
     const username = "DeeGAGA";
     fetch(`https://api.github.com/users/${username}/repos`)
       .then(res => res.json())
@@ -202,27 +204,27 @@
           }
         });
       });
-  const terminalMessage = "Initializing portfolio... Access granted. Welcome, Dee GAGA.";
-let tIndex = 0;
-const termText = document.getElementById("terminal-text");
 
-function typeTerminal() {
-  if (tIndex < terminalMessage.length) {
-    termText.textContent += terminalMessage.charAt(tIndex++);
-    setTimeout(typeTerminal, 60);
-  }
-}
-typeTerminal();
+    // Terminal banner animation
+    const terminalMessage = "Initializing portfolio... Access granted. Welcome, Dee GAGA.";
+    let tIndex = 0;
+    const termText = document.getElementById("terminal-text");
 
-    // Typewriter Animation
+    function typeTerminal() {
+      if (tIndex < terminalMessage.length) {
+        termText.textContent += terminalMessage.charAt(tIndex++);
+        setTimeout(typeTerminal, 60);
+      }
+    }
+    typeTerminal();
+
+    // Typewriter message rotation
     const messages = [
-  "CLI Dev by night, Trap God by day...",
-  "Ruby meets rhythm, code meets creativity.",
-  "Subscribe. Follow. Share. Dee GAGA is HERE.",
-  "Don't forget to feel good like I do... #YOLO 😎",
-  "Welcome to my portfolio — the future lives here."
-];
-
+      "CLI Dev by night, Trap God by day...",
+      "Ruby meets rhythm, code meets creativity.",
+      "Subscribe. Follow. Share. Dee GAGA is HERE.",
+      "Don't forget to feel good like I do... #YOLO",
+      "Welcome to my portfolio"
     ];
     let part = 0;
     let i = 0;
