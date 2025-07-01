@@ -8,6 +8,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
    <title>DeeGAGA — CLI Engineer / Music Artist</title>
   <style>
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(-45deg, #0f0f0f, #1a1a2e, #16213e, #0f3460);
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
+  cursor: none; /* Hide default cursor */
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Cursor Trail */
+.trail-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #00ffee;
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow: 0 0 6px #00ffee;
+}
+
 #typed-terminal {
   background-color: #000;
   padding: 3rem;
@@ -157,6 +184,23 @@
     backSpeed: 25,
     loop: true,
     smartBackspace: true
+  });
+</script>
+<script>
+  const dots = [];
+  for (let i = 0; i < 12; i++) {
+    const dot = document.createElement("div");
+    dot.className = "trail-dot";
+    document.body.appendChild(dot);
+    dots.push(dot);
+  }
+
+  let current = 0;
+  window.addEventListener("mousemove", function (e) {
+    const dot = dots[current];
+    dot.style.left = e.pageX + "px";
+    dot.style.top = e.pageY + "px";
+    current = (current + 1) % dots.length;
   });
 </script>
 
