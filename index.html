@@ -9,32 +9,35 @@
    <title>DeeGAGA — CLI Engineer / Music Artist</title>
   <style>
 <style>
+  <style>
   body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(-45deg, #0f0f0f, #1a1a2e, #16213e, #0f3460);
-    background-size: 400% 400%;
-    animation: gradientFlow 15s ease infinite;
-    cursor: none; /* Hides default cursor */
-    color: #fff;
+    background: linear-gradient(-45deg, #ff007f, #7f00ff, #001f3f, #39ff14);
+    background-size: 600% 600%;
+    animation: gradientFlow 10s ease infinite;
+    cursor: none;
+    color: #ffffff;
     font-family: 'Fira Code', monospace;
   }
 
   @keyframes gradientFlow {
     0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+    25% { background-position: 100% 50%; }
+    50% { background-position: 100% 0%; }
+    75% { background-position: 0% 50%; }
     100% { background-position: 0% 50%; }
   }
 
   .trail-dot {
     position: fixed;
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background-color: #00ffee;
+    background-color: #00ffff;
     pointer-events: none;
     z-index: 9999;
-    box-shadow: 0 0 6px #00ffee;
+    box-shadow: 0 0 8px #00ffee, 0 0 16px #00ffee;
   }
 </style>
 
