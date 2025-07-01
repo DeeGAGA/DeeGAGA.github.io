@@ -42,25 +42,6 @@
       box-shadow: 0 0 8px #00ffee, 0 0 16px #00ffee;
     }
 
-    .terminal-banner {
-      font-family: 'Fira Code', monospace;
-      color: #00ffcc;
-      font-size: 1.2em;
-      background: black;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      margin-bottom: 2rem;
-      box-shadow: 0 0 12px #00ffcc88;
-    }
-
-    .cursor {
-      animation: blink 1s step-start infinite;
-    }
-
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
-
     h1 {
       font-size: 3em;
       margin: 0.2em 0;
@@ -82,6 +63,23 @@
     .bio {
       max-width: 600px;
       margin-bottom: 2rem;
+    }
+
+    .skills {
+      margin: 2rem 0;
+    }
+
+    .skills ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skills li {
+      display: inline-block;
+      margin: 0.3rem 0.7rem;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
     }
 
     .socials a {
@@ -108,6 +106,38 @@
       opacity: 0;
       transform: translateY(30px);
       animation: fadeInUp 1s ease forwards;
+    }
+
+    .cv-buttons {
+      margin-top: 2rem;
+    }
+
+    .cv-buttons a {
+      background-color: #00ffff;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.8rem 1.2rem;
+      border-radius: 10px;
+      margin: 0 1rem;
+      transition: background 0.3s;
+    }
+
+    .cv-buttons a:hover {
+      background-color: #00dddd;
+    }
+
+    .screenshots {
+      margin-top: 2rem;
+    }
+
+    .screenshots img {
+      width: 80%;
+      max-width: 400px;
+      margin: 1rem auto;
+      display: block;
+      border: 2px solid #00ffff;
+      border-radius: 10px;
     }
 
     @keyframes fadeInUp {
@@ -142,10 +172,6 @@
   </style>
 </head>
 <body>
-  <div class="terminal-banner">
-    <span id="terminal-text"></span><span class="cursor">█</span>
-  </div>
-
   <h1>Dee GAGA</h1>
   <p class="tagline">"Where bold meets brilliance."</p>
 
@@ -153,6 +179,25 @@
 
   <div class="bio">
     <p>I'm Adrian Njuguna aka Dee GAGA — a bold, multi-talented creator: musician, CLI developer, dancer, video editor, and Ruby enthusiast. I build with rhythm and I code with heart. Welcome to my world.</p>
+  </div>
+
+  <div class="cv-buttons">
+    <a href="https://your-music-link.com" download>Download My Music</a>
+    <a href="mailto:adriankimomar@gmail.com">Book Studio Session</a>
+  </div>
+
+  <div class="skills">
+    <h2>Skills & Tools</h2>
+    <ul>
+      <li>Ruby</li>
+      <li>HTML</li>
+      <li>Git & GitHub</li>
+      <li>CLI Tooling</li>
+      <li>Music Production</li>
+      <li>Video Editing</li>
+      <li>Termux + Mobile Dev</li>
+      <li>Creative Direction</li>
+    </ul>
   </div>
 
   <div class="socials">
@@ -167,8 +212,13 @@
     <div id="project-list"></div>
   </div>
 
+  <div class="screenshots">
+    <h2>Live Previews</h2>
+    <img src="preview1.png" alt="CLI App Preview" />
+    <img src="preview2.png" alt="Portfolio UI Preview" />
+  </div>
+
   <script>
-    // Mouse trail effect
     const dots = [];
     for (let i = 0; i < 12; i++) {
       const dot = document.createElement("div");
@@ -185,7 +235,6 @@
       current = (current + 1) % dots.length;
     });
 
-    // GitHub project fetch
     const username = "DeeGAGA";
     fetch(`https://api.github.com/users/${username}/repos`)
       .then(res => res.json())
@@ -205,20 +254,6 @@
         });
       });
 
-    // Terminal banner animation
-    const terminalMessage = "Initializing portfolio... Access granted. Welcome, Dee GAGA.";
-    let tIndex = 0;
-    const termText = document.getElementById("terminal-text");
-
-    function typeTerminal() {
-      if (tIndex < terminalMessage.length) {
-        termText.textContent += terminalMessage.charAt(tIndex++);
-        setTimeout(typeTerminal, 60);
-      }
-    }
-    typeTerminal();
-
-    // Typewriter message rotation
     const messages = [
       "CLI Dev by night, Trap God by day...",
       "Ruby meets rhythm, code meets creativity.",
