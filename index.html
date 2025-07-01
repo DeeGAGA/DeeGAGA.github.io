@@ -169,9 +169,48 @@
         margin: 0.5rem 0;
       }
     }
+.cyber-panel {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: rgba(0, 255, 255, 0.05);
+  border: 2px solid #00ffff;
+  border-radius: 12px;
+  box-shadow: 0 0 12px #00ffee55;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.2em;
+  color: #00ffff;
+  text-align: left;
+  position: relative;
+}
+
+.cyber-text {
+  white-space: pre-wrap;
+  word-break: break-word;
+  padding: 1rem;
+}
+
+.cursor {
+  animation: blink 0.8s infinite;
+  color: #00ffff;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
   </style>
 </head>
 <body>
+<div class="cyber-panel">
+  <div class="cyber-text">
+    <span id="cyber-typewriter"></span>
+    <span class="cursor">█</span>
+  </div>
+</div>
+
   <h1>Dee GAGA</h1>
   <p class="tagline">"Where bold meets brilliance."</p>
 
@@ -286,6 +325,32 @@
     }
 
     type();
+const cyberMessages = [
+  ">> Booting Dee GAGA core system...",
+  ">> Loading modules: Music, Code, Art, Chaos...",
+  ">> Running mainframe CLI protocols...",
+  ">> System online. Welcome to the future."
+];
+
+let cyberIndex = 0;
+let cyberChar = 0;
+const cyberEl = document.getElementById("cyber-typewriter");
+
+function cyberType() {
+  if (cyberIndex >= cyberMessages.length) return;
+  const currentMessage = cyberMessages[cyberIndex];
+  if (cyberChar <= currentMessage.length) {
+    cyberEl.textContent = currentMessage.substring(0, cyberChar++);
+    setTimeout(cyberType, 60);
+  } else {
+    cyberChar = 0;
+    cyberIndex++;
+    setTimeout(cyberType, 1200);
+  }
+}
+
+cyberType();
+
   </script>
 </body>
 </html>
